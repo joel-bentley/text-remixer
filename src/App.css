@@ -1,0 +1,27 @@
+.App {
+  padding: 30px 0 30px 0;
+  text-align: left;
+}
+
+.main-text {
+  padding-top: 20px;
+}
+
+.sidebar-area {
+  width: 256px;
+  padding: 30px 30px 30px 30px;
+}
+
+.sidebar-text-panel {
+  border: 0px;
+}
+
+.sortable-list {
+  padding-top: 20px;
+}
+
+.toggle-sidebar {
+  font-size: 30px;
+  text-align: center;
+  padding: 10px;
+}
