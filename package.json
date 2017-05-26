@@ -4,16 +4,16 @@
   "private": true,
   "homepage": "https://joel-bentley.github.io/text-remixer",
   "devDependencies": {
-    "gh-pages": "^0.12.0",
-    "react-scripts": "0.9.0"
+    "gh-pages": "^1.0.0",
+    "react-scripts": "1.0.6"
   },
   "dependencies": {
-    "react": "^15.4.2",
-    "react-bootstrap": "^0.30.7",
-    "react-dom": "^15.4.2",
-    "react-markdown": "^2.4.4",
-    "react-sidebar": "^2.3.0",
-    "react-sortable-hoc": "^0.5.0"
+    "react": "^15.5.4",
+    "react-bootstrap": "^0.31.0",
+    "react-dom": "^15.5.4",
+    "react-markdown": "^2.5.0",
+    "react-sidebar": "^2.3.2",
+    "react-sortable-hoc": "^0.6.3"
   },
   "scripts": {
     "start": "react-scripts start",
