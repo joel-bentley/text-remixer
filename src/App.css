@@ -14,10 +14,16 @@
 
 .sidebar-text-panel {
   border: 0px;
+  margin-bottom: 0px;
+}
+
+.sidebar-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .sortable-list {
-  padding-top: 20px;
+  /*padding-top: 20px;*/
 }
 
 .toggle-sidebar {

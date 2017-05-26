@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import { arrayMove } from 'react-sortable-hoc';
 import { Button, Col, Panel } from 'react-bootstrap';
+import shuffle from 'lodash/shuffle';
+
 import './App.css';
-import textData from './data/sample-data';
+
 import SortableList from './SortableList';
 import List from './List';
 import ResponsiveSidebar from './ResponsiveSidebar';
+
+// import textData from './data/sample-data';
+import textData from './data/woyzeck.json';
 
 class App extends Component {
   state = {
     sectionOrder: Array.from(textData.sections, (v, i) => i),
     sidebarDocked: false,
-    sidebarOpen: false
+    sidebarOpen: false,
   };
 
   updateSidebarDocked = sidebarDocked => {
@@ -32,8 +37,20 @@ class App extends Component {
   onSortEnd = ({ oldIndex, newIndex }) => {
     const { sectionOrder } = this.state;
     this.setState({
-      sectionOrder: arrayMove(sectionOrder, oldIndex, newIndex)
+      sectionOrder: arrayMove(sectionOrder, oldIndex, newIndex),
     });
+  };
+
+  randomizeList = () => {
+    this.setState(prevState => {
+      return {
+        sectionOrder: shuffle(prevState.sectionOrder),
+      };
+    });
+  };
+
+  resetList = () => {
+    this.setState({ sectionOrder: Array.from(textData.sections, (v, i) => i) });
   };
 
   render() {
@@ -43,16 +60,34 @@ class App extends Component {
     );
     const titles = orderedTextData.map(section => section.title);
     const texts = orderedTextData.map(section => {
-      return `### ${section.title}\n\n${section.text}`;
+      return `### ${section.title}\n\n${section.text.german}`;
     });
 
     const sidebarContent = (
       <div className="sidebar-area">
-        <h4 className="text-center">
-          <Panel className="sidebar-text-panel">
-            Remix this text by dragging sections below to new positions
-          </Panel>
-        </h4>
+
+        <Panel className="sidebar-text-panel">
+          <div className="text-center">
+            <div className="sidebar-button">
+              <Button bsStyle="primary" onClick={this.randomizeList}>
+                Randomize order
+              </Button>
+            </div>
+
+            <div className="sidebar-button">
+              <Button bsStyle="primary" onClick={this.resetList}>
+                Reset to original
+              </Button>
+            </div>
+          </div>
+        </Panel>
+
+        <Panel className="sidebar-text-panel">
+          <h4 className="text-center">
+            You can also remix this text by dragging sections below to new positions
+          </h4>
+        </Panel>
+
         <div className="sortable-list">
           <SortableList items={titles} onSortEnd={this.onSortEnd} />
         </div>
